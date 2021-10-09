@@ -21,6 +21,10 @@ const Container = styled.div`
   flex-wrap: wrap;
   margin: 0 auto;
   padding: 20px 0;
+
+  .error {
+    color: #fff;
+  }
 `
 
 const TopPanel = styled.div`
@@ -51,10 +55,6 @@ export const RocketList = () => {
     dispatch(fetchLaunches(currentPage, order))
   }, [])
 
-  if (error) {
-    return <h1>{error}</h1>
-  }
-
   const changePage = (page) => {
     dispatch(fetchLaunches(page, order))
   }
@@ -65,6 +65,10 @@ export const RocketList = () => {
         ? { value: 'asc', desc: 'Сначала старые' }
         : { value: 'desc', desc: 'Сначала новые' }
     dispatch(fetchLaunches(currentPage, newOrder))
+  }
+
+  if (error) {
+    return <h1 className="error">{error}</h1>
   }
 
   return (
