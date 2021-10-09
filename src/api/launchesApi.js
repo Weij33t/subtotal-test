@@ -22,7 +22,6 @@ export const launchesApi = {
         desc: doc.details,
         rocketImage: await this.getRocketImage(doc.rocket),
       }))
-      console.log(data)
       return { totalPages: data.totalPages, currentPage: data.page, launches }
     } catch (e) {
       console.log(e)

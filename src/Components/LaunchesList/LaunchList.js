@@ -30,6 +30,7 @@ const TopPanel = styled.div`
   justify-content: center;
   align-items: center;
   margin: 0 auto;
+  margin-bottom: 40px;
 
   @media screen and (max-width: 450px) {
     grid-template-columns: auto;
@@ -53,8 +54,6 @@ export const RocketList = () => {
   if (error) {
     return <h1>{error}</h1>
   }
-
-  console.log(launches, totalPages)
 
   const changePage = (page) => {
     dispatch(fetchLaunches(page, order))
@@ -85,7 +84,7 @@ export const RocketList = () => {
       </TopPanel>
       <Container>
         {launches.map((launch) => (
-          <Launch launch={launch} />
+          <Launch key={launch.name} launch={launch} />
         ))}
       </Container>
     </TopContainer>

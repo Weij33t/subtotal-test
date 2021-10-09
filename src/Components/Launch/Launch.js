@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 
 import styled from 'styled-components'
 import { formatDate, formatDesc } from './../../utils/utils'
@@ -6,7 +6,6 @@ import { formatDate, formatDesc } from './../../utils/utils'
 const Container = styled.div`
   width: 100%;
   height: 500px;
-  overflow: hidden;
   display: grid;
   grid-template-columns: 1fr 3fr;
   grid-template-rows: auto max-content 170px;
@@ -14,14 +13,15 @@ const Container = styled.div`
   align-content: start;
   gap: 10px;
 
+  position: relative;
   background: #222222;
   border-radius: 0px;
-  border: 4px solid transparent;
-  border-bottom: 3px solid #fff;
-  box-shadow: 0px 4px 10px -7px #fff;
 
+  cursor: pointer;
   color: #fff;
-
+  &:hover {
+    box-shadow: 0px 4px 10px -7px #fff;
+  }
   .image {
     grid-area: Image;
     max-width: 100%;
@@ -49,15 +49,19 @@ const Container = styled.div`
 `
 
 export const Launch = ({ launch, ...props }) => {
+  const [isShowDesc, setIsShowDesc] = useState(false)
+
+  const toggleDesc = () => setIsShowDesc(!isShowDesc)
   return (
-    <Container>
-      <img className="image" src={launch.rocketImage} />
+    <Container onClick={toggleDesc}>
+      {!isShowDesc && <img className="image" src={launch.rocketImage} />}
       <span className="name">
         {launch.name}
         {', '}
         <span className="date">{formatDate(launch.date)}</span>
       </span>
-      <span className="desc">{formatDesc(launch.desc)}</span>
+      {!isShowDesc && <span className="desc">{formatDesc(launch.desc)}</span>}
+      {isShowDesc && <span className="desc">{launch.desc}</span>}
     </Container>
   )
 }

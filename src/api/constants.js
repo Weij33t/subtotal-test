@@ -7,5 +7,5 @@ export const launchesQuery = {
       $lte: '2019-01-01T00:00:00.000Z',
     },
   },
-  options: { limit: 12, sort: { date_utc: 'asc' } },
+  options: { limit: 9, sort: { date_utc: 'asc' } },
 }

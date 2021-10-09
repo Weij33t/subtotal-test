@@ -9,11 +9,11 @@ const Container = styled.div`
 `
 
 export const Pagination = ({ totalPages, changePage, currentPage, Button }) => {
-  const PAGE_LOAD_STEP = 3
+  const PAGE_LOAD_STEP = 2
   const SCROLL_BAR_WIDTH = 18
-  let pagesAtOnce = window.innerWidth < 768 + SCROLL_BAR_WIDTH ? 9 : 15
+  let pagesAtOnce = window.innerWidth < 768 + SCROLL_BAR_WIDTH ? 5 : 10
   pagesAtOnce =
-    window.innerWidth < 500 + SCROLL_BAR_WIDTH ? 6 : Math.min(pagesAtOnce, 15)
+    window.innerWidth < 500 + SCROLL_BAR_WIDTH ? 6 : Math.min(pagesAtOnce, 10)
   const [offset, setOffset] = useState(0)
   const [limit, setLimit] = useState(pagesAtOnce)
 
