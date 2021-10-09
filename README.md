@@ -1,6 +1,6 @@
 # Stack
 
-React, Reduxm Webpack, styled-components
+React, Redux, Webpack
 
 # Usage
 
