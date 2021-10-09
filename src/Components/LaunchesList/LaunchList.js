@@ -24,6 +24,7 @@ const Container = styled.div`
 
   .error {
     color: #fff;
+    margin: 0 auto;
   }
 `
 
