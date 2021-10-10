@@ -2,7 +2,6 @@
 import { Pagination } from './Pagination'
 import React from 'react'
 import { render, fireEvent, screen } from '@testing-library/react'
-import { Button } from './../Shared/Button'
 import '@testing-library/jest-dom'
 
 const changePage = jest.fn()
