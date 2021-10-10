@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
-import { fetchLaunches } from '../../store/launchesReducer'
+import { fetchLaunches } from '../../store/launchesReducer/launchesReducer'
 import styled from 'styled-components'
 import { Launch } from '../Launch/Launch'
 import { Pagination } from './../Pagination/Pagination'
@@ -67,7 +67,7 @@ export const RocketList = () => {
         : { value: 'desc', desc: 'Сначала новые' }
     dispatch(fetchLaunches(currentPage, newOrder))
   }
-
+  console.log(launches)
   if (error) {
     return <h1 className="error">{error}</h1>
   }

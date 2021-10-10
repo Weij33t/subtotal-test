@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import styled from 'styled-components'
+import { Button } from './../Shared/Button'
 
 const Container = styled.div`
   display: grid;
@@ -8,7 +9,7 @@ const Container = styled.div`
   gap: 10px;
 `
 
-export const Pagination = ({ totalPages, changePage, currentPage, Button }) => {
+export const Pagination = ({ totalPages, changePage }) => {
   const PAGE_LOAD_STEP = 2
   const SCROLL_BAR_WIDTH = 18
   let pagesAtOnce = window.innerWidth < 768 + SCROLL_BAR_WIDTH ? 5 : 10
@@ -16,6 +17,7 @@ export const Pagination = ({ totalPages, changePage, currentPage, Button }) => {
     window.innerWidth < 500 + SCROLL_BAR_WIDTH ? 6 : Math.min(pagesAtOnce, 10)
   const [offset, setOffset] = useState(0)
   const [limit, setLimit] = useState(pagesAtOnce)
+  const [currentPage, setCurrentPage] = useState(1)
 
   const pageClickHandler = (newCurrentPage) => {
     if (newCurrentPage > limit - PAGE_LOAD_STEP) {
@@ -30,6 +32,7 @@ export const Pagination = ({ totalPages, changePage, currentPage, Button }) => {
       setLimit(Math.max(limit - PAGE_LOAD_STEP, pagesAtOnce))
       setOffset(Math.max(0, offset - PAGE_LOAD_STEP))
     }
+    setCurrentPage(newCurrentPage)
     changePage(newCurrentPage)
   }
 

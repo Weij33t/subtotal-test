@@ -1,11 +1,17 @@
 {
   "name": "subtotal-test",
+  "jest": {
+    "verbose": true,
+    "testEnvironment": "jsdom"
+  },
   "version": "1.0.0",
   "description": "",
   "private": true,
   "scripts": {
     "dev": "webpack-dev-server --mode development --open",
-    "build": "webpack --mode production"
+    "build": "webpack --mode production",
+    "test": "jest",
+    "test:watch": "npm test -- --watch"
   },
   "keywords": [],
   "author": "",
@@ -15,13 +21,23 @@
     "@babel/plugin-transform-react-jsx": "^7.14.9",
     "@babel/polyfill": "^7.12.1",
     "@babel/preset-env": "^7.15.8",
+    "@babel/preset-react": "^7.14.5",
+    "@testing-library/jest-dom": "^5.14.1",
+    "@testing-library/react": "^12.1.2",
+    "autoprefixer": "^9.8.8",
+    "babel-jest": "^27.2.5",
     "babel-loader": "^8.2.2",
     "babel-plugin-react-css-modules": "^5.2.6",
     "clean-webpack-plugin": "^4.0.0",
     "css-loader": "^6.4.0",
     "html-webpack-plugin": "^5.3.2",
+    "install-peers": "^1.0.3",
+    "jest": "^27.2.5",
+    "jsdom": "^18.0.0",
     "mini-css-extract-plugin": "^2.4.2",
     "optimize-css-assets-webpack-plugin": "^6.0.1",
+    "postcss": "^8.3.9",
+    "redux-mock-store": "^1.5.4",
     "terser-webpack-plugin": "^5.2.4",
     "webpack": "^5.58.1",
     "webpack-cli": "^4.9.0",

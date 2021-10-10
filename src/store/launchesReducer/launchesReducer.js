@@ -1,4 +1,4 @@
-import { launchesApi } from './../api/launchesApi'
+import { launchesApi } from './../../api/launchesApi'
 
 const initialState = {
   launches: [],
