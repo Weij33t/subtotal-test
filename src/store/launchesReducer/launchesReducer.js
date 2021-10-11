@@ -28,25 +28,27 @@ export const launchesReducer = (state = initialState, action) => {
   }
 }
 
-export const fetchLaunches = (page, order) => async (dispatch) => {
-  try {
-    const data = await launchesApi.getLaunches(page, order.value)
-    const launches = data.launches
-    const totalPages = data.totalPages
-    const currentPage = data.currentPage
-    dispatch(
-      fetchLaunchesSuccess(
-        await Promise.all(launches),
-        totalPages,
-        currentPage,
-        order
+export const fetchLaunches =
+  (page = 1, order = 'asc') =>
+  async (dispatch) => {
+    try {
+      const data = await launchesApi.getLaunches(page, order.value)
+      const launches = data.launches
+      const totalPages = data.totalPages
+      const currentPage = data.currentPage
+      dispatch(
+        fetchLaunchesSuccess(
+          await Promise.all(launches),
+          totalPages,
+          currentPage,
+          order
+        )
       )
-    )
-  } catch (error) {
-    console.log(error)
-    dispatch(fetchLaunchesFail())
+    } catch (error) {
+      console.log(error)
+      dispatch(fetchLaunchesFail())
+    }
   }
-}
 export function fetchLaunchesFail() {
   return { type: FETCH_LAUNCHES_FAIL, payload: 'Ошибка при загрузке данных' }
 }
