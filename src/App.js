@@ -1,5 +1,5 @@
 import React from 'react'
-import { RocketList } from './Components/LaunchesList/LaunchList'
+import { LaunchList } from './Components/LaunchesList/LaunchList'
 import styled from 'styled-components'
 
 const Container = styled.div`
@@ -11,7 +11,7 @@ const Container = styled.div`
 export const App = () => {
   return (
     <Container>
-      <RocketList />
+      <LaunchList />
     </Container>
   )
 }

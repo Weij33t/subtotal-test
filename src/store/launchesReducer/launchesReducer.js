@@ -22,7 +22,7 @@ export const launchesReducer = (state = initialState, action) => {
         order: action.payload.order,
       }
     case FETCH_LAUNCHES_FAIL:
-      return { ...state, error: action.payload }
+      return { ...state, error: 'Ошибка при загрузке данных' }
     default:
       return state
   }
@@ -50,7 +50,7 @@ export const fetchLaunches =
     }
   }
 export function fetchLaunchesFail() {
-  return { type: FETCH_LAUNCHES_FAIL, payload: 'Ошибка при загрузке данных' }
+  return { type: FETCH_LAUNCHES_FAIL }
 }
 
 export function fetchLaunchesSuccess(data, totalPages, currentPage, order) {

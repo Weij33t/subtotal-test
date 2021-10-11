@@ -22,7 +22,7 @@ const Container = styled.div`
   margin: 0 auto;
   padding: 20px 0;
 
-  .error {
+  & .error {
     color: #fff;
     margin: 0 auto;
   }
@@ -44,7 +44,14 @@ const TopPanel = styled.div`
   }
 `
 
-export const RocketList = () => {
+const Error = styled.h1`
+  margin: 0 auto;
+  text-align: center;
+
+  color: #fff;
+`
+
+export const LaunchList = () => {
   const dispatch = useDispatch()
   const launches = useSelector((state) => state.launches)
   const error = useSelector((state) => state.error)
@@ -67,10 +74,6 @@ export const RocketList = () => {
         : { value: 'desc', desc: 'Сначала новые' }
     dispatch(fetchLaunches(currentPage, newOrder))
   }
-  console.log(launches)
-  if (error) {
-    return <h1 className="error">{error}</h1>
-  }
 
   return (
     <TopContainer>
@@ -87,11 +90,14 @@ export const RocketList = () => {
           changePage={changePage}
         />
       </TopPanel>
-      <Container>
-        {launches.map((launch) => (
-          <Launch key={launch.name} launch={launch} />
-        ))}
-      </Container>
+      {!error && (
+        <Container>
+          {launches.map((launch) => (
+            <Launch key={launch.name} launch={launch} />
+          ))}
+        </Container>
+      )}
+      {error && <Error>{error}</Error>}
     </TopContainer>
   )
 }
