@@ -29,7 +29,7 @@ export const launchesReducer = (state = initialState, action) => {
 }
 
 export const fetchLaunches =
-  (page = 1, order = 'asc') =>
+  (page = 1, order = 'desc') =>
   async (dispatch) => {
     try {
       const data = await launchesApi.getLaunches(page, order.value)
